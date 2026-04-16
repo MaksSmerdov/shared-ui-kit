@@ -30,8 +30,8 @@
 
 Первая волна миграции уже включает:
 
-- `CustomButton`
-- `CustomTooltip`
+- `Button`
+- `Tooltip`
 - `IconButton`
 - `Loader`
 - `Skeleton`
@@ -111,11 +111,11 @@
 
 Кандидаты на следующий перенос после текущей пятерки:
 
-- `CustomInput`
-- `CustomCheckbox`
-- `CustomDatePicker`
-- `CustomSelect`
-- `CustomAccordion`
+- `Input`
+- `Checkbox`
+- `DatePicker`
+- `Select`
+- `Accordion`
 
 ## Что еще остается временным
 

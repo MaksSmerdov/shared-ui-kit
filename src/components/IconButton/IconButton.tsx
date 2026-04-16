@@ -4,7 +4,7 @@ import {
   type TooltipProps,
 } from '@mui/material';
 import type { ReactNode } from 'react';
-import CustomTooltip from '../CustomTooltip/CustomTooltip';
+import Tooltip from '../Tooltip/Tooltip';
 import styles from './IconButton.module.scss';
 
 type IconButtonSize = 'small' | 'medium' | 'large';
@@ -36,9 +36,9 @@ const IconButton = ({
 
   if (tooltip) {
     return (
-      <CustomTooltip title={tooltip} placement={placement}>
+      <Tooltip title={tooltip} placement={placement}>
         {button}
-      </CustomTooltip>
+      </Tooltip>
     );
   }
 

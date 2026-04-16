@@ -1,8 +1,8 @@
 import { Button as MuiButton } from '@mui/material';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
-import styles from './CustomButton.module.scss';
+import styles from './Button.module.scss';
 
-export interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   isActive?: boolean;
   className?: string;
@@ -12,7 +12,7 @@ export interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElemen
   muiColor?: 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
 }
 
-const CustomButton = ({
+const Button = ({
   children,
   isActive = false,
   className,
@@ -21,7 +21,7 @@ const CustomButton = ({
   muiVariant = 'contained',
   muiColor = 'success',
   ...props
-}: CustomButtonProps) => {
+}: ButtonProps) => {
   if (variant === 'mui') {
     return (
       <MuiButton
@@ -53,4 +53,4 @@ const CustomButton = ({
   );
 };
 
-export default CustomButton;
+export default Button;

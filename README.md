@@ -24,8 +24,8 @@
 
 Публичные экспорты описаны в `src/index.ts`:
 
-- `CustomButton`
-- `CustomTooltip`
+- `Button`
+- `Tooltip`
 - `IconButton`
 - `Loader`
 - `Skeleton`
@@ -36,7 +36,7 @@
 На текущем этапе поддерживается только импорт из корня пакета. Deep-import'ы считаются нестабильными.
 
 ```ts
-import { CustomButton, CustomTooltip, IconButton, Loader, Skeleton, UiKitProvider } from '@sorbent/ui-kit';
+import { Button, Tooltip, IconButton, Loader, Skeleton, UiKitProvider } from '@sorbent/ui-kit';
 ```
 
 ## Быстрый старт
@@ -65,12 +65,12 @@ export function AppRoot() {
 ### 3. Использовать компоненты из пакета
 
 ```tsx
-import { CustomButton, Loader } from '@sorbent/ui-kit';
+import { Button, Loader } from '@sorbent/ui-kit';
 
 export function Example() {
   return (
     <>
-      <CustomButton>Сохранить</CustomButton>
+      <Button>Сохранить</Button>
       <Loader size="small" />
     </>
   );
@@ -142,8 +142,8 @@ import '@sorbent/ui-kit/styles.css';
 
 Из `new-main-server` в пакет уже перенесены:
 
-- `CustomButton`
-- `CustomTooltip`
+- `Button`
+- `Tooltip`
 - `IconButton`
 - `Loader`
 - `Skeleton`

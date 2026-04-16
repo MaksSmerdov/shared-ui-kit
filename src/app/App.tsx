@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CustomButton, CustomTooltip, IconButton, Loader, Skeleton, UiKitProvider } from '../index';
+import { Button, Tooltip, IconButton, Loader, Skeleton, UiKitProvider } from '../index';
 import type { UiKitThemeMode } from '../index';
 import './App.css';
 
@@ -19,7 +19,7 @@ function App() {
           </div>
 
           <div className="ui-kit-demo__theme-switcher">
-            <CustomButton
+            <Button
               type="button"
               variant={theme === 'light' ? 'primary' : 'secondary'}
               isActive={theme === 'light'}
@@ -28,8 +28,8 @@ function App() {
               }}
             >
               Light
-            </CustomButton>
-            <CustomButton
+            </Button>
+            <Button
               type="button"
               variant={theme === 'dark' ? 'primary' : 'secondary'}
               isActive={theme === 'dark'}
@@ -38,7 +38,7 @@ function App() {
               }}
             >
               Dark
-            </CustomButton>
+            </Button>
           </div>
         </section>
 
@@ -46,13 +46,13 @@ function App() {
           <article className="ui-kit-demo__card">
             <h2 className="ui-kit-demo__card-title">Buttons</h2>
             <div className="ui-kit-demo__row">
-              <CustomButton type="button">Primary</CustomButton>
-              <CustomButton type="button" variant="secondary">
+              <Button type="button">Primary</Button>
+              <Button type="button" variant="secondary">
                 Secondary
-              </CustomButton>
-              <CustomButton type="button" variant="mui">
+              </Button>
+              <Button type="button" variant="mui">
                 MUI
-              </CustomButton>
+              </Button>
             </div>
           </article>
 
@@ -77,9 +77,9 @@ function App() {
                 icon={<span className="ui-kit-demo__icon">i</span>}
                 tooltip="Пример tooltip из UI-kit"
               />
-              <CustomTooltip title="Tooltip без оберток">
+              <Tooltip title="Tooltip без оберток">
                 <span className="ui-kit-demo__tooltip-target">Наведи курсор</span>
-              </CustomTooltip>
+              </Tooltip>
             </div>
           </article>
         </section>

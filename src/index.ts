@@ -1,8 +1,8 @@
-export { default as CustomButton } from './components/CustomButton/CustomButton';
-export type { CustomButtonProps } from './components/CustomButton/CustomButton';
+export { default as Button } from './components/Button/Button';
+export type { ButtonProps } from './components/Button/Button';
 
-export { default as CustomTooltip } from './components/CustomTooltip/CustomTooltip';
-export type { CustomTooltipProps } from './components/CustomTooltip/CustomTooltip';
+export { default as Tooltip } from './components/Tooltip/Tooltip';
+export type { TooltipPropsBase } from './components/Tooltip/Tooltip';
 
 export { default as IconButton } from './components/IconButton/IconButton';
 export type { IconButtonProps } from './components/IconButton/IconButton';

@@ -1,14 +1,14 @@
-import { Fade, Tooltip, type TooltipProps } from '@mui/material';
+import { Fade, Tooltip as MuiTooltip, type TooltipProps } from '@mui/material';
 import type { ReactElement } from 'react';
 
-export interface CustomTooltipProps extends Omit<TooltipProps, 'children'> {
+export interface TooltipPropsBase extends Omit<TooltipProps, 'children'> {
   children: ReactElement;
   title: string;
 }
 
-const CustomTooltip = ({ children, title, ...rest }: CustomTooltipProps) => {
+const Tooltip = ({ children, title, ...rest }: TooltipPropsBase) => {
   return (
-    <Tooltip
+    <MuiTooltip
       title={title}
       arrow
       placement="top"
@@ -17,8 +17,8 @@ const CustomTooltip = ({ children, title, ...rest }: CustomTooltipProps) => {
       {...rest}
     >
       {children}
-    </Tooltip>
+    </MuiTooltip>
   );
 };
 
-export default CustomTooltip;
+export default Tooltip;
