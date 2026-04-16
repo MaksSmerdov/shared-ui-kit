@@ -1,0 +1,13 @@
+.checkbox {
+  padding: 4px;
+  border-radius: 6px;
+  background: transparent;
+
+  &:hover {
+    background: transparent;
+  }
+
+  :global(.MuiTouchRipple-root) {
+    display: none;
+  }
+}

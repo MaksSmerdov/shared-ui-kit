@@ -18,7 +18,18 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', '@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'],
+      external: [
+        /^react($|\/)/,
+        /^react-dom($|\/)/,
+        /^@mui\/material($|\/)/,
+        /^@mui\/icons-material($|\/)/,
+        /^@mui\/x-date-pickers($|\/)/,
+        /^@emotion\/react($|\/)/,
+        /^@emotion\/styled($|\/)/,
+        /^react-hook-form($|\/)/,
+        /^react-select($|\/)/,
+        /^dayjs($|\/)/,
+      ],
     },
   },
 });

@@ -1,0 +1,111 @@
+@use '../../theme/mixins' as mixins;
+@use '../../theme/tokens' as vars;
+
+.accordion {
+  font-family: 'Bitter', 'sans-serif';
+  border: 1px solid vars.$cerebral-grey;
+  border-radius: 5px;
+  box-shadow: none;
+  margin-bottom: 8px;
+  transition:
+    border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+
+  &:before {
+    display: none;
+  }
+
+  &:hover {
+    border-color: vars.$hulk;
+    box-shadow: 0 0 3px 1px var(--theme-card-ring);
+  }
+
+  &:global(.Mui-expanded) {
+    border-color: vars.$hulk;
+    box-shadow: 0 0 3px 1px var(--theme-card-ring-active);
+    margin-bottom: 8px;
+  }
+
+  :global(.MuiAccordionSummary-root) {
+    min-height: 48px;
+    padding: 0 16px;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: var(--accent-bg-soft);
+    }
+
+    &:global(.Mui-expanded) {
+      min-height: 48px;
+      background-color: var(--accent-bg-soft-active);
+    }
+  }
+
+  :global(.MuiAccordionDetails-root) {
+    padding: 16px;
+    background-color: vars.$white;
+  }
+}
+
+.accordion-summary {
+  &:hover {
+    background-color: var(--accent-bg-soft);
+  }
+}
+
+.accordion-title {
+  @include mixins.text-style(16px, 22px, 600, vars.$carbon);
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.expand-icon {
+  color: vars.$hulk;
+  transition:
+    transform 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+
+  &:hover {
+    color: vars.$spring-forth;
+  }
+}
+
+.accordion:global(.Mui-expanded) .expand-icon {
+  transform: rotate(180deg);
+  color: vars.$hulk;
+}
+
+.accordion-details {
+  @include mixins.text-style(14px, 20px, 400, vars.$carbon);
+  padding-top: 8px;
+}
+
+@media (max-width: 1280px) {
+  .accordion {
+    :global(.MuiAccordionSummary-root) {
+      min-height: 40px;
+      padding: 0 12px;
+
+      &:global(.Mui-expanded) {
+        min-height: 40px;
+      }
+    }
+
+    :global(.MuiAccordionDetails-root) {
+      padding: 12px;
+    }
+  }
+
+  .accordion-title {
+    @include mixins.text-style(14px, 20px, 600, vars.$carbon);
+  }
+
+  .accordion-details {
+    @include mixins.text-style(13px, 18px, 400, vars.$carbon);
+  }
+
+  .expand-icon {
+    font-size: 20px !important;
+  }
+}

@@ -1,0 +1,58 @@
+.date-picker {
+  :global(.MuiOutlinedInput-root) {
+    height: 40px;
+    font-family: 'Bitter', 'sans-serif';
+
+    fieldset {
+      border-color: var(--border-default);
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &:hover fieldset {
+      border-color: var(--hulk);
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: var(--hulk);
+      transition: border-color 0.3s ease-in-out;
+
+      &:active fieldset {
+        border-color: var(--hulk);
+      }
+    }
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused fieldset) {
+    border-color: var(--hulk);
+    transition: border-color 0.3s ease-in-out;
+  }
+
+  :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+    padding-right: 20px;
+    font-family: 'Bitter', 'sans-serif';
+    font-size: 14px;
+    top: -7px;
+    left: -3px;
+  }
+
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    font-family: 'Bitter', 'sans-serif';
+    color: var(--black);
+    font-weight: 700;
+  }
+
+  &_compact {
+    :global(.MuiOutlinedInput-root) {
+      height: 36px;
+      min-width: 120px;
+      max-width: 140px;
+    }
+
+    :global(.MuiOutlinedInput-input) {
+      font-size: 13px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+  }
+}

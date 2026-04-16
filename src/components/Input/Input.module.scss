@@ -1,0 +1,297 @@
+@use '../../theme/tokens' as vars;
+
+.input {
+  position: relative;
+  margin-bottom: 20px;
+
+  :global(.MuiOutlinedInput-root) {
+    height: 40px;
+    border-radius: 5px;
+    font-family: 'Bitter', 'sans-serif';
+
+    fieldset {
+      border-color: var(--border-default);
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &:hover fieldset {
+      border-color: var(--hulk);
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: var(--hulk) !important;
+      transition: border-color 0.3s ease-in-out;
+
+      &:active fieldset {
+        border-color: var(--hulk);
+      }
+    }
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused fieldset) {
+    border-color: var(--hulk) !important;
+    transition: border-color 0.3s ease-in-out;
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused:not(:hover) fieldset) {
+    border-color: var(--hulk) !important;
+  }
+
+  :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+    font-family: 'Bitter', 'sans-serif';
+    top: -7px;
+    left: -3px;
+    transform-origin: top left;
+    transition:
+      transform 0.2s cubic-bezier(0, 0, 0.2, 1) 0ms,
+      color 0.2s cubic-bezier(0, 0, 0.2, 1) 0ms,
+      font-size 0.2s cubic-bezier(0, 0, 0.2, 1) 0ms,
+      left 0.2s cubic-bezier(0, 0, 0.2, 1) 0ms;
+  }
+
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    font-family: 'Bitter', 'sans-serif';
+    color: var(--hulk);
+    transform: translate(14px, -9px) scale(0.75) !important;
+    transform-origin: top left !important;
+    transition:
+      transform 0.2s cubic-bezier(0, 0, 0.2, 1) 0ms,
+      color 0.2s cubic-bezier(0, 0, 0.2, 1) 0ms,
+      font-size 0.2s cubic-bezier(0, 0, 0.2, 1) 0ms;
+  }
+
+  :global(.MuiFormHelperText-root) {
+    margin: 0;
+    position: absolute;
+    font-family: 'Bitter', 'sans-serif';
+    top: 100%;
+    left: 10px;
+    margin-top: 4px;
+    line-height: 1.2;
+  }
+
+  :global(.MuiOutlinedInput-input:-webkit-autofill),
+  :global(.MuiOutlinedInput-input:-webkit-autofill:hover),
+  :global(.MuiOutlinedInput-input:-webkit-autofill:focus),
+  :global(.MuiOutlinedInput-input:-webkit-autofill:active) {
+    -webkit-text-fill-color: vars.$black !important;
+    box-shadow: 0 0 0 1000px vars.$white inset !important;
+    -webkit-box-shadow: 0 0 0 1000px vars.$white inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+    caret-color: vars.$black;
+  }
+}
+
+.input.error {
+  :global(.MuiOutlinedInput-root) {
+    &:hover fieldset {
+      border-color: var(--danger);
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: var(--danger) !important;
+      transition: border-color 0.3s ease-in-out;
+    }
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused fieldset) {
+    border-color: var(--danger) !important;
+    transition: border-color 0.3s ease-in-out;
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused:not(:hover) fieldset) {
+    border-color: var(--danger) !important;
+  }
+
+  :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+    top: -7px;
+    left: -3px;
+    transform-origin: top left;
+  }
+
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    color: var(--danger);
+    transform: translate(14px, -9px) scale(0.75) !important;
+    transform-origin: top left !important;
+  }
+}
+
+.input-form {
+  position: relative;
+  margin-bottom: 20px;
+
+  :global(.MuiOutlinedInput-root) {
+    height: 48px;
+    border-radius: 8px;
+    font-family: 'Bitter', 'sans-serif';
+    background-color: var(--surface-accent-subtle);
+
+    fieldset {
+      border-width: 2px;
+      border-color: var(--border-default);
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &:hover {
+      background-color: var(--surface-hover);
+
+      fieldset {
+        border-color: var(--nordic-grass-green);
+      }
+    }
+
+    &.Mui-focused {
+      background-color: var(--surface-elevated);
+      box-shadow: 0 0 0 3px var(--field-focus-ring);
+
+      fieldset {
+        border-color: var(--hulk) !important;
+        border-width: 2px;
+      }
+    }
+
+    &.Mui-focused:not(:hover) {
+      fieldset {
+        border-color: var(--hulk) !important;
+      }
+    }
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused fieldset) {
+    border-color: var(--hulk) !important;
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused:not(:hover) fieldset) {
+    border-color: var(--hulk) !important;
+  }
+
+  :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+    font-family: 'Bitter', 'sans-serif';
+    color: var(--text-muted);
+    font-size: 15px;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    margin: 0;
+    transition: all 0.2s ease-in-out;
+  }
+
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    font-family: 'Bitter', 'sans-serif';
+    color: var(--hulk);
+    font-weight: 500;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+    padding-left: 4px;
+  }
+
+  :global(.MuiOutlinedInput-input) {
+    color: var(--carbon);
+    font-size: 15px;
+    padding: 14px 16px;
+  }
+
+  :global(.MuiFormHelperText-root) {
+    position: absolute;
+    margin: 0;
+    font-family: 'Bitter', 'sans-serif';
+    font-size: 12px;
+    top: 100%;
+    left: 16px;
+    margin-top: 4px;
+    line-height: 1.2;
+  }
+
+  :global(.MuiOutlinedInput-input:-webkit-autofill),
+  :global(.MuiOutlinedInput-input:-webkit-autofill:hover),
+  :global(.MuiOutlinedInput-input:-webkit-autofill:focus),
+  :global(.MuiOutlinedInput-input:-webkit-autofill:active) {
+    -webkit-text-fill-color: vars.$carbon !important;
+    box-shadow: 0 0 0 1000px vars.$surface-elevated inset !important;
+    -webkit-box-shadow: 0 0 0 1000px vars.$surface-elevated inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+    caret-color: vars.$carbon;
+    border-radius: 8px;
+  }
+}
+
+.input-form.error {
+  :global(.MuiOutlinedInput-root) {
+    &:hover fieldset {
+      border-color: var(--danger);
+    }
+
+    &.Mui-focused {
+      background-color: var(--surface-elevated);
+      box-shadow: 0 0 0 3px var(--field-error-ring);
+
+      fieldset {
+        border-color: var(--danger) !important;
+        border-width: 2px;
+      }
+    }
+
+    &.Mui-focused:not(:hover) {
+      fieldset {
+        border-color: var(--danger) !important;
+      }
+    }
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused) {
+    box-shadow: 0 0 0 3px var(--field-error-ring);
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused fieldset) {
+    border-color: var(--danger) !important;
+  }
+
+  :global(.MuiOutlinedInput-root.Mui-focused:not(:hover) fieldset) {
+    border-color: var(--danger) !important;
+  }
+
+  :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+    color: var(--text-muted);
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: top left;
+  }
+
+  :global(.MuiInputLabel-root.MuiInputLabel-shrink) {
+    color: var(--danger);
+    transform: translate(14px, -9px) scale(0.75) !important;
+    transform-origin: top left !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .input {
+    :global(.MuiOutlinedInput-root) {
+      height: 30px;
+      font-size: 14px;
+    }
+
+    :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+      font-size: 14px;
+      top: -12px;
+      left: -5px;
+    }
+  }
+
+  .input-form {
+    :global(.MuiOutlinedInput-root) {
+      height: 44px;
+    }
+
+    :global(.MuiOutlinedInput-input) {
+      font-size: 14px;
+      padding: 12px 14px;
+    }
+
+    :global(.MuiInputLabel-root:not(.MuiInputLabel-shrink)) {
+      font-size: 14px;
+    }
+  }
+}
