@@ -10,6 +10,7 @@
 - для локальной разработки `new-main-server` временно подключает пакет через локальный tarball.
 
 Подробный контекст миграции находится в [MIGRATION.md](./src/docs/MIGRATION.md).
+История версий по волнам находится в [VERSIONS.md](./src/docs/VERSIONS.md).
 
 ## Стек
 
@@ -290,3 +291,4 @@ npm run format
 ## Что читать дальше
 
 - [src/docs/MIGRATION.md](./src/docs/MIGRATION.md) — история миграции, принятые решения и текущее состояние.
+- [src/docs/VERSIONS.md](./src/docs/VERSIONS.md) — соответствие между версиями пакета и волнами переноса.
