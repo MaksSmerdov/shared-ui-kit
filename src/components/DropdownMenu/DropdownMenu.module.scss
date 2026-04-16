@@ -1,0 +1,47 @@
+@use '../../theme/tokens' as vars;
+
+.dropdownMenu {
+  position: relative;
+  display: inline-block;
+
+  &__trigger {
+    display: inline-block;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 100%;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: vars.$white;
+    border: 1px solid vars.$steam;
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 40px;
+    align-items: center;
+  }
+
+  &__menu_left {
+    right: 0;
+  }
+
+  &__menu_right {
+    right: 0;
+  }
+
+  &__menu_center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__menu_portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+  }
+}

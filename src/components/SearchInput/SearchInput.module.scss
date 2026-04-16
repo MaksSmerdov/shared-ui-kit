@@ -1,0 +1,84 @@
+@use '../../theme/mixins' as mixins;
+@use '../../theme/tokens' as vars;
+
+.search-input {
+  :global(.MuiOutlinedInput-root) {
+    height: 30px;
+    font-family: 'Bitter', 'sans-serif';
+    background-color: var(--surface-elevated);
+    outline: none !important;
+
+    &:active {
+      border-color: vars.$hulk;
+    }
+
+    fieldset,
+    :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: vars.$hulk;
+      border-width: 1px;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &:hover fieldset,
+    &:hover :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: vars.$hulk;
+    }
+
+    &.Mui-focused fieldset,
+    &.Mui-focused :global(.MuiOutlinedInput-notchedOutline),
+    &:focus-within fieldset,
+    &:focus-within :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: vars.$hulk !important;
+      border-width: 1px !important;
+    }
+  }
+
+  :global(.MuiInputBase-input) {
+    @include mixins.text-style(13px, 13px, 400, vars.$black);
+    padding: 6px 10px;
+
+    &:focus {
+      outline: none !important;
+    }
+
+    &::placeholder {
+      color: var(--text-placeholder);
+    }
+  }
+
+  :global(.MuiInputAdornment-root) {
+    margin: 0;
+  }
+
+  :global(.MuiIconButton-root) {
+    padding: 4px;
+    color: var(--text-faint);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: vars.$black;
+      background-color: transparent;
+    }
+  }
+
+  :global(.MuiSvgIcon-root) {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .search-input {
+    :global(.MuiOutlinedInput-root) {
+      height: 32px;
+    }
+
+    :global(.MuiInputBase-input) {
+      @include mixins.text-style(12px, 12px, 400, vars.$black);
+      padding: 5px 8px;
+    }
+
+    :global(.MuiSvgIcon-root) {
+      font-size: 16px;
+    }
+  }
+}
