@@ -1,0 +1,35 @@
+.iconButton {
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--icon-hover-bg);
+  }
+
+  :global(.MuiSvgIcon-root) {
+    font-size: inherit;
+  }
+}
+
+.iconButton.iconButton_small {
+  padding: 4px;
+
+  :global(.MuiSvgIcon-root) {
+    font-size: 18px;
+  }
+}
+
+.iconButton.iconButton_medium {
+  padding: 5px;
+
+  :global(.MuiSvgIcon-root) {
+    font-size: 22px;
+  }
+}
+
+.iconButton.iconButton_large {
+  padding: 7px;
+
+  :global(.MuiSvgIcon-root) {
+    font-size: 26px;
+  }
+}

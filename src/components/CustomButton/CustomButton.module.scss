@@ -1,0 +1,81 @@
+@use '../../theme/mixins' as mixins;
+@use '../../theme/tokens' as tokens;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px 8px;
+  background-color: transparent;
+  border: 1px solid tokens.$hulk;
+  transition:
+    color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  @include mixins.text-style(16px, 22px, 600, tokens.$hulk);
+
+  &:hover {
+    color: tokens.$white;
+    background-color: tokens.$hulk;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      color: tokens.$hulk;
+      background-color: transparent;
+    }
+  }
+}
+
+.active {
+  color: tokens.$white;
+  background-color: tokens.$hulk;
+}
+
+.secondary {
+  background-color: tokens.$white;
+  color: tokens.$hulk;
+  border: 1px solid tokens.$hulk;
+
+  &:hover {
+    background-color: tokens.$hulk;
+    color: tokens.$white;
+  }
+
+  &:disabled:hover {
+    background-color: tokens.$white;
+    color: tokens.$hulk;
+  }
+}
+
+.buttonIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.muiButton {
+  padding: 4px 8px !important;
+  font-family: 'Bitter', sans-serif !important;
+  font-size: 14px !important;
+  text-transform: inherit !important;
+}
+
+@media (max-width: 1280px) {
+  .button {
+    padding: 3px 6px;
+    @include mixins.text-style(14px, 16px);
+  }
+
+  .muiButton {
+    padding: 2px 8px !important;
+    font-size: 12px !important;
+  }
+}

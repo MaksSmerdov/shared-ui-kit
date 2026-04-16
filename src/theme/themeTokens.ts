@@ -1,0 +1,28 @@
+export type UiKitThemeMode = 'light' | 'dark';
+
+export const themeTokens: Record<UiKitThemeMode, Record<string, string>> = {
+  light: {
+    hulk: '#008000',
+    white: '#ffffff',
+    black: '#000000',
+    carbon: '#333333',
+    'surface-elevated': '#ffffff',
+    'surface-hover': '#f0f9f3',
+    'shadow-soft': 'rgba(0, 0, 0, 0.1)',
+    'icon-hover-bg': 'rgba(76, 175, 80, 0.15)',
+    'mui-tooltip-bg': 'rgba(97, 97, 97, 0.92)',
+    'mui-tooltip-fg': '#ffffff',
+  },
+  dark: {
+    hulk: '#4caf50',
+    white: '#121212',
+    black: '#f5f5f5',
+    carbon: '#e0e0e0',
+    'surface-elevated': '#1e2123',
+    'surface-hover': '#262a2d',
+    'shadow-soft': 'rgba(0, 0, 0, 0.4)',
+    'icon-hover-bg': 'rgba(76, 175, 80, 0.2)',
+    'mui-tooltip-bg': '#f5f5f5',
+    'mui-tooltip-fg': '#121212',
+  },
+};

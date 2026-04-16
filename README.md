@@ -1,73 +1,176 @@
-# React + TypeScript + Vite
+# `@sorbent/ui-kit`
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`shared-ui-kit` это библиотека общих UI-компонентов, выделяемая из `new-main-server` для повторного использования в других проектах.
 
-Currently, two official plugins are available:
+Сейчас пакет находится на первом этапе миграции:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- уже вынесен базовый набор компонентов;
+- добавлен минимальный `UiKitProvider`;
+- выделены light/dark theme tokens;
+- обратная интеграция в `new-main-server` еще не начата.
 
-## React Compiler
+Подробный контекст миграции находится в [MIGRATION.md](./MIGRATION.md).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Текущий стек
 
-## Expanding the ESLint configuration
+- `React 19`
+- `MUI 7`
+- `Emotion 11`
+- `TypeScript`
+- `SCSS`
+- `Vite` как сборщик библиотеки
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Текущий публичный API
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Публичные экспорты описаны в `src/index.ts`:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- `CustomButton`
+- `CustomTooltip`
+- `IconButton`
+- `Loader`
+- `Skeleton`
+- `UiKitProvider`
+- `themeTokens`
+- `UiKitThemeMode`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+На текущем этапе поддерживается только импорт из корня пакета. Deep-import'ы считаются нестабильными.
+
+```ts
+import { CustomButton, CustomTooltip, IconButton, Loader, Skeleton, UiKitProvider } from '@sorbent/ui-kit';
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Быстрый старт
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Установить пакет и peer dependencies
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Пакет ожидает наличие:
+
+- `react`
+- `react-dom`
+- `@mui/material`
+- `@mui/icons-material`
+- `@emotion/react`
+- `@emotion/styled`
+
+### 2. Обернуть приложение в `UiKitProvider`
+
+```tsx
+import { UiKitProvider } from '@sorbent/ui-kit';
+
+export function AppRoot() {
+  return <UiKitProvider theme="light">{/* app */}</UiKitProvider>;
+}
 ```
+
+### 3. Использовать компоненты из пакета
+
+```tsx
+import { CustomButton, Loader } from '@sorbent/ui-kit';
+
+export function Example() {
+  return (
+    <>
+      <CustomButton>Сохранить</CustomButton>
+      <Loader size="small" />
+    </>
+  );
+}
+```
+
+### 4. Подключение стилей
+
+Пакет экспортирует собранный CSS как `@sorbent/ui-kit/styles.css`.
+
+Если потребительская сборка не подтягивает CSS автоматически через импорт компонентов, подключай его явно:
+
+```ts
+import '@sorbent/ui-kit/styles.css';
+```
+
+## Темизация
+
+Сейчас пакет поддерживает только 2 режима:
+
+- `light`
+- `dark`
+
+`UiKitProvider` делает две вещи:
+
+- подключает MUI `ThemeProvider` и `CssBaseline`;
+- выставляет CSS variables на `document.documentElement` через атрибут `data-ui-kit-theme`.
+
+Это важно учитывать, потому что тема кита сейчас имеет глобальный side effect на root-элемент документа.
+
+Источник текущих токенов:
+
+- TS tokens: `src/theme/themeTokens.ts`
+- CSS variables: `src/theme/theme.scss`
+- MUI bridge: `src/theme/createMuiTheme.ts`
+
+Минимальный набор токенов первого этапа:
+
+- `hulk`
+- `white`
+- `black`
+- `carbon`
+- `surface-elevated`
+- `surface-hover`
+- `shadow-soft`
+- `icon-hover-bg`
+- `mui-tooltip-bg`
+- `mui-tooltip-fg`
+
+## Scope пакета
+
+В `shared-ui-kit` сейчас допустимо выносить:
+
+- базовые UI-компоненты;
+- theme/tokens/provider;
+- thin wrappers над MUI;
+- стили, которые не завязаны на конкретное приложение.
+
+Пока не нужно класть сюда:
+
+- бизнес-логику;
+- API;
+- feature hooks;
+- роутинг;
+- store;
+- app-specific runtime и стили из `new-main-server`.
+
+## Что уже перенесено
+
+Из `new-main-server` в пакет уже перенесены:
+
+- `CustomButton`
+- `CustomTooltip`
+- `IconButton`
+- `Loader`
+- `Skeleton`
+- минимальный `UiKitProvider`
+- light/dark tokens первого этапа
+
+## Ограничения текущего этапа
+
+Сейчас сознательно не сделано:
+
+- интеграция обратно в `new-main-server`;
+- `localStorage` persistence темы;
+- подписка на `prefers-color-scheme`;
+- перенос полного набора design tokens;
+- перенос app-wide global styles;
+- перенос feature-level и business-level кода.
+
+Также в репозитории могут оставаться шаблонные или demo-файлы от исходного Vite-проекта. Они не считаются частью публичного API.
+
+## Скрипты
+
+```bash
+npm run build
+npm run lint
+npm run format
+```
+
+## Что читать дальше
+
+- [MIGRATION.md](./MIGRATION.md) — зачем начат перенос, что уже вынесено и что будет следующим шагом.
